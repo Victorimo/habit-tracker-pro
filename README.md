@@ -6,7 +6,7 @@ Built as part of COMP8066 - AI-Powered Mini SDLC Project.
 
 ## Features
 
-- **CRUD Habits** — Create, read, update, and delete habits with categories and frequency settings.
+- **CRUD Habits** - Create, read, update, and delete habits with categories and frequency settings.
 - **Daily Completion Tracking** - Mark habits as done/undone for any date.
 - **Streak Engine** - Calculates current streak, longest streak, and 30-day completion rate.
 - **Weekly Analytics** - Interactive charts (bar chart + doughnut) showing completion trends over 7/14/30 days.
@@ -108,4 +108,4 @@ The streak engine calculates consecutive days of habit completion. It handles:
 
 ## Licence
 
-This project was created for academic purposes (COMP8066).
+This project was created by Victor Orimolusi for academic purposes (COMP8066).
