@@ -30,7 +30,7 @@ Built as part of COMP8066 - AI-Powered Mini SDLC Project.
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/habit-tracker-pro.git
+git clone https://github.com/Victorimo/habit-tracker-pro.git
 cd habit-tracker-pro
 
 # Create and activate a virtual environment (recommended)
