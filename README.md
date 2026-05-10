@@ -2,15 +2,15 @@
 
 A local web application for tracking daily habits, calculating streaks, and visualising weekly analytics.
 
-Built as part of COMP8066 — AI-Powered Mini SDLC Project.
+Built as part of COMP8066 - AI-Powered Mini SDLC Project.
 
 ## Features
 
 - **CRUD Habits** — Create, read, update, and delete habits with categories and frequency settings.
-- **Daily Completion Tracking** — Mark habits as done/undone for any date.
-- **Streak Engine** — Calculates current streak, longest streak, and 30-day completion rate.
-- **Weekly Analytics** — Interactive charts (bar chart + doughnut) showing completion trends over 7/14/30 days.
-- **Local JSON Storage** — All data persisted to `data/habits.json`, no database required.
+- **Daily Completion Tracking** - Mark habits as done/undone for any date.
+- **Streak Engine** - Calculates current streak, longest streak, and 30-day completion rate.
+- **Weekly Analytics** - Interactive charts (bar chart + doughnut) showing completion trends over 7/14/30 days.
+- **Local JSON Storage** - All data persisted to `data/habits.json`, no database required.
 
 ## Tech Stack
 
