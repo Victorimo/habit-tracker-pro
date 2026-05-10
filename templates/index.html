@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker Pro</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <h1>Habit Tracker <span>Pro</span></h1>
+            </div>
+            <nav>
+                <button class="nav-btn active" data-view="dashboard" onclick="switchView('dashboard')">
+                    <span class="nav-icon">📊</span> Dashboard
+                </button>
+                <button class="nav-btn" data-view="habits" onclick="switchView('habits')">
+                    <span class="nav-icon">✅</span> My Habits
+                </button>
+                <button class="nav-btn" data-view="analytics" onclick="switchView('analytics')">
+                    <span class="nav-icon">📈</span> Analytics
+                </button>
+            </nav>
+            <div class="sidebar-footer">
+                <p>COMP8066 Project 2</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard View -->
+            <section id="view-dashboard" class="view active">
+                <div class="view-header">
+                    <h2>Dashboard</h2>
+                    <p class="date-display" id="current-date"></p>
+                </div>
+                <div class="stats-grid" id="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-total">0</div>
+                        <div class="stat-label">Total Habits</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-completed">0</div>
+                        <div class="stat-label">Done Today</div>
+                    </div>
+                    <div class="stat-card streak-card">
+                        <div class="stat-value" id="stat-best-streak">0</div>
+                        <div class="stat-label">Best Streak</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-rate">0%</div>
+                        <div class="stat-label">30-Day Rate</div>
+                    </div>
+                </div>
+
+                <div class="today-section">
+                    <h3>Today's Habits</h3>
+                    <div id="today-habits" class="habit-checklist"></div>
+                    <p id="no-habits-msg" class="empty-msg" style="display:none;">
+                        No habits yet. Go to <strong>My Habits</strong> to create one!
+                    </p>
+                </div>
+            </section>
+
+            <!-- Habits View -->
+            <section id="view-habits" class="view">
+                <div class="view-header">
+                    <h2>My Habits</h2>
+                    <button class="btn btn-primary" onclick="openModal()">+ New Habit</button>
+                </div>
+                <div id="habits-list" class="habits-list"></div>
+            </section>
+
+            <!-- Analytics View -->
+            <section id="view-analytics" class="view">
+                <div class="view-header">
+                    <h2>Weekly Analytics</h2>
+                    <select id="analytics-period" onchange="loadAnalytics()">
+                        <option value="7">Last 7 Days</option>
+                        <option value="14">Last 14 Days</option>
+                        <option value="30">Last 30 Days</option>
+                    </select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="completionChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="habitBreakdownChart"></canvas>
+                </div>
+                <div id="analytics-table" class="analytics-table"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="habit-modal" class="modal" style="display:none;">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <h3 id="modal-title">New Habit</h3>
+            <form id="habit-form" onsubmit="saveHabit(event)">
+                <input type="hidden" id="habit-id">
+                <div class="form-group">
+                    <label for="habit-name">Habit Name *</label>
+                    <input type="text" id="habit-name" required maxlength="100" placeholder="e.g., Read 30 minutes">
+                </div>
+                <div class="form-group">
+                    <label for="habit-category">Category</label>
+                    <select id="habit-category">
+                        <option value="Health">Health</option>
+                        <option value="Fitness">Fitness</option>
+                        <option value="Learning">Learning</option>
+                        <option value="Productivity">Productivity</option>
+                        <option value="Mindfulness">Mindfulness</option>
+                        <option value="General" selected>General</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="habit-description">Description</label>
+                    <textarea id="habit-description" rows="2" placeholder="Optional description..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="habit-frequency">Frequency</label>
+                    <select id="habit-frequency">
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
